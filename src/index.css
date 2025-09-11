@@ -173,4 +173,11 @@
   .w-70 {
     width: 280px;
   }
+
+  /* Mobile responsive adjustments */
+  @media (max-width: 1023px) {
+    .ml-70 {
+      margin-left: 0;
+    }
+  }
 }

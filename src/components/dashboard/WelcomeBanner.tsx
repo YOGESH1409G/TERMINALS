@@ -14,7 +14,7 @@ export const WelcomeBanner = ({ studentName }: WelcomeBannerProps) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 p-8 md:p-10"
+      className="relative overflow-hidden rounded-2xl lg:rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 p-6 md:p-8 lg:p-10"
     >
       {/* Background Image */}
       <div className="absolute inset-0 opacity-20">
@@ -43,7 +43,7 @@ export const WelcomeBanner = ({ studentName }: WelcomeBannerProps) => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3"
           >
             Hi, {firstName}! 👋
           </motion.h1>
@@ -52,7 +52,7 @@ export const WelcomeBanner = ({ studentName }: WelcomeBannerProps) => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl"
+            className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl"
           >
             Ready to explore new opportunities? Your personalized recommendations are waiting.
           </motion.p>
@@ -62,14 +62,14 @@ export const WelcomeBanner = ({ studentName }: WelcomeBannerProps) => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="flex items-center gap-4 p-4 bg-card/80 backdrop-blur-sm rounded-2xl border border-border/50"
+          className="hidden sm:flex items-center gap-3 lg:gap-4 p-3 lg:p-4 bg-card/80 backdrop-blur-sm rounded-xl lg:rounded-2xl border border-border/50"
         >
-          <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
-            <TrendingUp className="w-6 h-6 text-accent" />
+          <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-accent/20 flex items-center justify-center">
+            <TrendingUp className="w-5 h-5 lg:w-6 lg:h-6 text-accent" />
           </div>
           <div>
-            <p className="text-sm font-medium text-foreground">Growth This Week</p>
-            <p className="text-lg font-bold text-accent">+23%</p>
+            <p className="text-xs lg:text-sm font-medium text-foreground">Growth This Week</p>
+            <p className="text-base lg:text-lg font-bold text-accent">+23%</p>
           </div>
         </motion.div>
       </div>

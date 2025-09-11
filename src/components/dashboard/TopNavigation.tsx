@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Bell, Search, ChevronDown } from "lucide-react";
+import { Bell, Search, ChevronDown, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -7,9 +7,10 @@ import { Badge } from "@/components/ui/badge";
 
 interface TopNavigationProps {
   studentName: string;
+  onMenuClick: () => void;
 }
 
-export const TopNavigation = ({ studentName }: TopNavigationProps) => {
+export const TopNavigation = ({ studentName, onMenuClick }: TopNavigationProps) => {
   return (
     <motion.header
       initial={{ y: -60, opacity: 0 }}
@@ -17,16 +18,30 @@ export const TopNavigation = ({ studentName }: TopNavigationProps) => {
       transition={{ duration: 0.3 }}
       className="sticky top-0 z-30 bg-card/95 backdrop-blur-sm border-b border-border"
     >
-      <div className="flex items-center justify-between h-16 px-6">
+      <div className="flex items-center justify-between h-16 px-4 lg:px-6">
+        {/* Mobile Menu Button */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onMenuClick}
+          className="lg:hidden"
+        >
+          <Menu className="w-5 h-5" />
+        </Button>
+
         {/* Search Bar */}
-        <div className="flex-1 max-w-md">
-          <div className="relative">
+        <div className="flex-1 max-w-md mx-4">
+          <div className="relative hidden sm:block">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               placeholder="Search courses, colleges, careers..."
               className="pl-10 bg-muted/50 border-0 focus:bg-background transition-colors"
             />
           </div>
+          {/* Mobile Search Icon */}
+          <Button variant="ghost" size="icon" className="sm:hidden">
+            <Search className="w-5 h-5" />
+          </Button>
         </div>
 
         {/* Right Side */}

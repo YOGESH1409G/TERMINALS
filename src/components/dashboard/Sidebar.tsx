@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Home, 
   BookOpen, 
@@ -7,7 +7,8 @@ import {
   Calendar,
   User,
   Settings,
-  HelpCircle
+  HelpCircle,
+  X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -15,6 +16,8 @@ import { cn } from "@/lib/utils";
 interface SidebarProps {
   activeTab: string;
   onTabChange: (tab: string) => void;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 const sidebarItems = [
@@ -31,14 +34,27 @@ const bottomItems = [
   { id: "help", label: "Help", icon: HelpCircle },
 ];
 
-export const Sidebar = ({ activeTab, onTabChange }: SidebarProps) => {
+export const Sidebar = ({ activeTab, onTabChange, isOpen, onClose }: SidebarProps) => {
   return (
-    <motion.aside
-      initial={{ x: -280 }}
-      animate={{ x: 0 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className="fixed left-0 top-0 z-40 h-screen w-70 bg-card border-r border-border"
-    >
+    <AnimatePresence>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
+        />
+      )}
+
+      <motion.aside
+        initial={{ x: -280 }}
+        animate={{ x: isOpen ? 0 : -280 }}
+        exit={{ x: -280 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="fixed left-0 top-0 z-40 h-screen w-70 bg-card border-r border-border lg:translate-x-0"
+      >
       <div className="flex flex-col h-full">
         {/* Logo */}
         <div className="p-6 border-b border-border">
@@ -46,15 +62,26 @@ export const Sidebar = ({ activeTab, onTabChange }: SidebarProps) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="flex items-center gap-3"
+            className="flex items-center justify-between"
           >
-            <div className="w-10 h-10 rounded-xl primary-gradient flex items-center justify-center">
-              <GraduationCap className="w-6 h-6 text-white" />
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl primary-gradient flex items-center justify-center">
+                <GraduationCap className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-lg font-bold text-foreground">StudyGuide</h1>
+                <p className="text-sm text-muted-foreground">Digital Platform</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-lg font-bold text-foreground">StudyGuide</h1>
-              <p className="text-sm text-muted-foreground">Digital Platform</p>
-            </div>
+            {/* Close button for mobile */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onClose}
+              className="lg:hidden"
+            >
+              <X className="w-5 h-5" />
+            </Button>
           </motion.div>
         </div>
 
@@ -118,5 +145,6 @@ export const Sidebar = ({ activeTab, onTabChange }: SidebarProps) => {
         </div>
       </div>
     </motion.aside>
+    </AnimatePresence>
   );
 };

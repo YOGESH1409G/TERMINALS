@@ -25,6 +25,7 @@ import careersData from "@/data/careers.json";
 
 export const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const studentName = "Alex Johnson";
 
   const statsData = [
@@ -91,11 +92,19 @@ export const Dashboard = () => {
   if (activeTab !== "dashboard") {
     return (
       <div className="min-h-screen bg-background flex">
-        <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
-        <div className="flex-1 ml-70">
-          <TopNavigation studentName={studentName} />
-          <main className="p-6">
-            <div className="dashboard-card p-8 text-center">
+        <Sidebar 
+          activeTab={activeTab} 
+          onTabChange={setActiveTab}
+          isOpen={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
+        />
+        <div className="flex-1 lg:ml-70">
+          <TopNavigation 
+            studentName={studentName}
+            onMenuClick={() => setSidebarOpen(true)}
+          />
+          <main className="p-4 lg:p-6">
+            <div className="dashboard-card p-6 lg:p-8 text-center">
               <h2 className="text-2xl font-bold text-foreground mb-4">
                 {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Page
               </h2>
@@ -111,12 +120,20 @@ export const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background flex">
-      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+      <Sidebar 
+        activeTab={activeTab} 
+        onTabChange={setActiveTab}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+      />
       
-      <div className="flex-1 ml-70">
-        <TopNavigation studentName={studentName} />
+      <div className="flex-1 lg:ml-70">
+        <TopNavigation 
+          studentName={studentName}
+          onMenuClick={() => setSidebarOpen(true)}
+        />
         
-        <main className="p-6 space-y-8">
+        <main className="p-4 lg:p-6 space-y-6 lg:space-y-8">
           {/* Welcome Banner */}
           <WelcomeBanner studentName={studentName} />
 
@@ -135,7 +152,7 @@ export const Dashboard = () => {
               </Button>
             </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
               {statsData.map((stat, index) => (
                 <StatsCard
                   key={stat.title}
@@ -147,9 +164,9 @@ export const Dashboard = () => {
           </section>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Left Column - Recommendations */}
-            <div className="lg:col-span-2 space-y-6">
+            <div className="lg:col-span-2 space-y-4 lg:space-y-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -175,7 +192,7 @@ export const Dashboard = () => {
             </div>
 
             {/* Right Column - Deadlines */}
-            <div className="space-y-6">
+            <div className="space-y-4 lg:space-y-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
