@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "B.Sc. Computer Science",
+    "university": "State University",
+    "duration": "3 years",
+    "fees": "₹45,000/year",
+    "rating": 4.5,
+    "category": "Technology",
+    "description": "Comprehensive computer science program covering programming, algorithms, and software development."
+  },
+  {
+    "id": 2,
+    "title": "B.Com (Hons)",
+    "university": "Commerce College",
+    "duration": "3 years",
+    "fees": "₹25,000/year",
+    "rating": 4.2,
+    "category": "Commerce",
+    "description": "Advanced commerce program with focus on accounting, finance, and business management."
+  },
+  {
+    "id": 3,
+    "title": "B.A. Psychology",
+    "university": "Liberal Arts Institute",
+    "duration": "3 years",
+    "fees": "₹30,000/year",
+    "rating": 4.3,
+    "category": "Arts",
+    "description": "In-depth study of human behavior, mental processes, and psychological research methods."
+  },
+  {
+    "id": 4,
+    "title": "B.Tech Mechanical Engineering",
+    "university": "Technical Institute",
+    "duration": "4 years",
+    "fees": "₹80,000/year",
+    "rating": 4.7,
+    "category": "Engineering",
+    "description": "Comprehensive engineering program covering design, manufacturing, and mechanical systems."
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Software Developer",
+    "field": "Technology",
+    "averageSalary": "₹8,00,000/year",
+    "growthRate": 22,
+    "education": "B.Tech/B.Sc CS",
+    "skills": ["Programming", "Problem Solving", "Software Design"],
+    "path": [
+      { "stage": "Bachelor's Degree", "duration": "3-4 years", "description": "B.Tech/B.Sc in Computer Science" },
+      { "stage": "Internships", "duration": "6 months", "description": "Gain practical experience" },
+      { "stage": "Junior Developer", "duration": "2-3 years", "description": "Entry-level position" },
+      { "stage": "Senior Developer", "duration": "3-5 years", "description": "Advanced technical role" },
+      { "stage": "Tech Lead/Manager", "duration": "5+ years", "description": "Leadership position" }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Investment Banker",
+    "field": "Finance",
+    "averageSalary": "₹12,00,000/year",
+    "growthRate": 15,
+    "education": "B.Com/BBA + MBA",
+    "skills": ["Financial Analysis", "Communication", "Market Research"],
+    "path": [
+      { "stage": "Bachelor's Degree", "duration": "3 years", "description": "B.Com/BBA" },
+      { "stage": "MBA Finance", "duration": "2 years", "description": "Specialized MBA program" },
+      { "stage": "Analyst", "duration": "2-3 years", "description": "Entry-level banking role" },
+      { "stage": "Associate", "duration": "3-4 years", "description": "Mid-level position" },
+      { "stage": "VP/Director", "duration": "5+ years", "description": "Senior management" }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Clinical Psychologist",
+    "field": "Healthcare",
+    "averageSalary": "₹6,00,000/year",
+    "growthRate": 18,
+    "education": "B.A Psychology + M.A + PhD",
+    "skills": ["Counseling", "Research", "Communication"],
+    "path": [
+      { "stage": "Bachelor's Degree", "duration": "3 years", "description": "B.A in Psychology" },
+      { "stage": "Master's Degree", "duration": "2 years", "description": "M.A in Clinical Psychology" },
+      { "stage": "Internship", "duration": "1 year", "description": "Clinical experience" },
+      { "stage": "License", "duration": "6 months", "description": "Professional certification" },
+      { "stage": "Private Practice", "duration": "Ongoing", "description": "Independent practice" }
+    ]
+  }
+]

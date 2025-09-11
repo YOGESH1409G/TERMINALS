@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Government Degree College",
+    "location": "Delhi",
+    "distance": "2.3 km",
+    "rating": 4.4,
+    "programs": ["B.A.", "B.Sc.", "B.Com"],
+    "fees": "₹15,000/year",
+    "established": 1965,
+    "type": "Government"
+  },
+  {
+    "id": 2,
+    "name": "St. Mary's College",
+    "location": "Mumbai",
+    "distance": "5.7 km",
+    "rating": 4.6,
+    "programs": ["B.A.", "B.Sc.", "BBA"],
+    "fees": "₹50,000/year",
+    "established": 1948,
+    "type": "Private"
+  },
+  {
+    "id": 3,
+    "name": "Tech Institute of Engineering",
+    "location": "Bangalore",
+    "distance": "8.2 km",
+    "rating": 4.8,
+    "programs": ["B.Tech", "M.Tech", "B.Sc."],
+    "fees": "₹85,000/year",
+    "established": 1992,
+    "type": "Private"
+  },
+  {
+    "id": 4,
+    "name": "Commerce University",
+    "location": "Pune",
+    "distance": "12.1 km",
+    "rating": 4.3,
+    "programs": ["B.Com", "BBA", "CA"],
+    "fees": "₹35,000/year",
+    "established": 1978,
+    "type": "State University"
+  }
+]

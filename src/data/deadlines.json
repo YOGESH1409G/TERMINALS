@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "National Merit Scholarship",
+    "deadline": "2024-03-15",
+    "type": "Scholarship",
+    "amount": "₹50,000",
+    "status": "upcoming",
+    "daysLeft": 12,
+    "description": "Merit-based scholarship for undergraduate students with excellent academic records."
+  },
+  {
+    "id": 2,
+    "title": "IIT JEE Main Registration",
+    "deadline": "2024-03-20",
+    "type": "Entrance Exam",
+    "amount": "₹1,000",
+    "status": "upcoming",
+    "daysLeft": 17,
+    "description": "Registration for Joint Entrance Examination for engineering admissions."
+  },
+  {
+    "id": 3,
+    "title": "Delhi University Admission",
+    "deadline": "2024-04-10",
+    "type": "College Application",
+    "amount": "₹500",
+    "status": "upcoming",
+    "daysLeft": 38,
+    "description": "Application deadline for undergraduate programs at Delhi University."
+  },
+  {
+    "id": 4,
+    "title": "State Government Scholarship",
+    "deadline": "2024-04-25",
+    "type": "Scholarship",
+    "amount": "₹25,000",
+    "status": "upcoming",
+    "daysLeft": 53,
+    "description": "Financial aid for students from economically disadvantaged backgrounds."
+  }
+]
