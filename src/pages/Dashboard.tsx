@@ -129,19 +129,19 @@ export const Dashboard = () => {
 
   if (activeTab !== "dashboard") {
     return (
-      <div className="min-h-screen bg-background flex">
+      <div className="min-h-screen w-full bg-background flex">
         <Sidebar 
           activeTab={activeTab} 
           onTabChange={setActiveTab}
           isOpen={sidebarOpen}
           onClose={() => setSidebarOpen(false)}
         />
-        <div className="flex-1 lg:ml-70">
+        <div className="flex-1 w-full lg:ml-70">
           <TopNavigation 
             studentName={studentName}
             onMenuClick={() => setSidebarOpen(true)}
           />
-          <main className="p-4 lg:p-6">
+          <main className="w-full max-w-none p-4 lg:p-6">
             <div className="dashboard-card p-6 lg:p-8 text-center">
               <h2 className="text-2xl font-bold text-foreground mb-4">
                 {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Page
@@ -157,7 +157,7 @@ export const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen w-full bg-background flex">
       <Sidebar 
         activeTab={activeTab} 
         onTabChange={setActiveTab}
@@ -165,13 +165,13 @@ export const Dashboard = () => {
         onClose={() => setSidebarOpen(false)}
       />
       
-      <div className="flex-1 lg:ml-70">
+      <div className="flex-1 w-full lg:ml-70">
         <TopNavigation 
           studentName={studentName}
           onMenuClick={() => setSidebarOpen(true)}
         />
         
-        <main className="p-4 lg:p-6 space-y-6 lg:space-y-8">
+        <main className="w-full max-w-none p-4 lg:p-6 space-y-6 lg:space-y-8">
           {/* Welcome Banner */}
           <WelcomeBanner studentName={studentName} />
 
