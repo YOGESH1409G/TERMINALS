@@ -6,9 +6,13 @@ import {
   TrendingUp, 
   Clock,
   Plus,
-  Filter
+  Filter,
+  Sparkles,
+  School,
+  Briefcase
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sidebar } from "@/components/dashboard/Sidebar";
 import { TopNavigation } from "@/components/dashboard/TopNavigation";
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
@@ -59,7 +63,8 @@ export const Dashboard = () => {
     },
   ];
 
-  const recommendations = [
+  // Organize recommendations by category
+  const courseRecommendations = [
     {
       title: "B.Sc. Computer Science",
       subtitle: "State University",
@@ -70,6 +75,18 @@ export const Dashboard = () => {
       duration: "3 years"
     },
     {
+      title: "B.Tech Artificial Intelligence",
+      subtitle: "Tech Institute",
+      description: "Cutting-edge program focusing on AI, machine learning, and data science with industry partnerships.",
+      category: "Technology",
+      rating: 4.7,
+      location: "5.1 km away",
+      duration: "4 years"
+    }
+  ];
+
+  const collegeRecommendations = [
+    {
       title: "Government Degree College",
       subtitle: "Delhi University",
       description: "Nearby college offering excellent B.A., B.Sc., and B.Com programs with affordable fees and quality education.",
@@ -79,12 +96,33 @@ export const Dashboard = () => {
       duration: "3-4 years"
     },
     {
+      title: "Modern Arts & Science College",
+      subtitle: "Private Institution",
+      description: "Well-equipped college with modern facilities, industry exposure, and excellent placement records.",
+      category: "Education",
+      rating: 4.6,
+      location: "3.8 km away",
+      duration: "3-4 years"
+    }
+  ];
+
+  const careerRecommendations = [
+    {
       title: "Software Developer Career Path",
       subtitle: "Technology Field",
       description: "High-growth career with average salary of ₹8,00,000/year. Perfect match for your technical interests and skills.",
       category: "Career",
       rating: 4.8,
       location: "Remote + Office",
+      duration: "Career Path"
+    },
+    {
+      title: "Data Scientist Career Path",
+      subtitle: "Analytics Field",
+      description: "Emerging field with excellent growth prospects. Average salary ₹12,00,000/year with high demand.",
+      category: "Career",
+      rating: 4.9,
+      location: "Hybrid",
       duration: "Career Path"
     }
   ];
@@ -165,7 +203,7 @@ export const Dashboard = () => {
 
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-            {/* Left Column - Recommendations */}
+            {/* Left Column - Recommendations with Tabs */}
             <div className="lg:col-span-2 space-y-4 lg:space-y-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -173,22 +211,65 @@ export const Dashboard = () => {
                 transition={{ delay: 0.4 }}
                 className="flex items-center justify-between"
               >
-                <h2 className="text-2xl font-bold text-foreground">Recommendations for You</h2>
-                <Button variant="outline" size="sm" className="gap-2">
-                  <Plus className="w-4 h-4" />
-                  View All
-                </Button>
+                <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+                  <Sparkles className="w-6 h-6 text-primary" />
+                  Recommendations for You
+                </h2>
               </motion.div>
               
-              <div className="space-y-4">
-                {recommendations.map((rec, index) => (
-                  <RecommendationCard
-                    key={index}
-                    {...rec}
-                    delay={0.2 + index * 0.1}
-                  />
-                ))}
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="dashboard-card p-2"
+              >
+                <Tabs defaultValue="courses" className="w-full">
+                  <TabsList className="grid w-full grid-cols-3 mb-6">
+                    <TabsTrigger value="courses" className="flex items-center gap-2">
+                      <BookOpen className="w-4 h-4" />
+                      <span className="hidden sm:inline">Courses</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="colleges" className="flex items-center gap-2">
+                      <School className="w-4 h-4" />
+                      <span className="hidden sm:inline">Colleges</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="careers" className="flex items-center gap-2">
+                      <Briefcase className="w-4 h-4" />
+                      <span className="hidden sm:inline">Careers</span>
+                    </TabsTrigger>
+                  </TabsList>
+                  
+                  <TabsContent value="courses" className="space-y-4 mt-0">
+                    {courseRecommendations.map((rec, index) => (
+                      <RecommendationCard
+                        key={index}
+                        {...rec}
+                        delay={0.2 + index * 0.1}
+                      />
+                    ))}
+                  </TabsContent>
+                  
+                  <TabsContent value="colleges" className="space-y-4 mt-0">
+                    {collegeRecommendations.map((rec, index) => (
+                      <RecommendationCard
+                        key={index}
+                        {...rec}
+                        delay={0.2 + index * 0.1}
+                      />
+                    ))}
+                  </TabsContent>
+                  
+                  <TabsContent value="careers" className="space-y-4 mt-0">
+                    {careerRecommendations.map((rec, index) => (
+                      <RecommendationCard
+                        key={index}
+                        {...rec}
+                        delay={0.2 + index * 0.1}
+                      />
+                    ))}
+                  </TabsContent>
+                </Tabs>
+              </motion.div>
             </div>
 
             {/* Right Column - Deadlines */}
@@ -199,7 +280,10 @@ export const Dashboard = () => {
                 transition={{ delay: 0.5 }}
                 className="flex items-center justify-between"
               >
-                <h2 className="text-xl font-bold text-foreground">Upcoming Deadlines</h2>
+                <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-destructive" />
+                  Upcoming Deadlines
+                </h2>
                 <Button variant="ghost" size="sm">View All</Button>
               </motion.div>
               
@@ -216,7 +300,18 @@ export const Dashboard = () => {
           </div>
 
           {/* Career Path Chart */}
-          <CareerChart />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            className="dashboard-card p-6"
+          >
+            <div className="flex items-center gap-2 mb-6">
+              <TrendingUp className="w-6 h-6 text-primary" />
+              <h2 className="text-2xl font-bold text-foreground">Career Path Preview</h2>
+            </div>
+            <CareerChart />
+          </motion.div>
         </main>
       </div>
     </div>

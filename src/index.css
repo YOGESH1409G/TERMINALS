@@ -42,11 +42,27 @@
 
     --radius: 1rem;
 
-    /* Dashboard-specific tokens */
+    /* Dashboard-specific tokens - Enhanced */
     --dashboard-gradient: linear-gradient(135deg, hsl(217 91% 60%), hsl(262 83% 58%));
     --welcome-gradient: linear-gradient(135deg, hsl(217 100% 97%), hsl(262 100% 97%));
     --card-shadow: 0 4px 6px -1px hsl(220 9% 46% / 0.1), 0 2px 4px -1px hsl(220 9% 46% / 0.06);
     --card-shadow-hover: 0 10px 15px -3px hsl(220 9% 46% / 0.1), 0 4px 6px -2px hsl(220 9% 46% / 0.05);
+    
+    /* New enhanced gradients for attraction */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary) / 0.7));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent) / 0.6));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1));
+    --gradient-card-glow: linear-gradient(145deg, hsl(var(--card)), hsl(var(--card) / 0.98));
+    
+    /* Enhanced shadow system */
+    --shadow-enhanced: 0 10px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04);
+    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.15);
+    --shadow-elegant: 0 8px 30px -6px hsl(var(--foreground) / 0.12);
+    
+    /* Glassmorphism effects */
+    --glass-bg: hsl(var(--background) / 0.8);
+    --glass-border: hsl(var(--border) / 0.5);
     
     /* Animation variables */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -146,7 +162,14 @@
 
 @layer components {
   .dashboard-card {
-    @apply bg-card border border-border rounded-2xl shadow-[var(--card-shadow)] hover:shadow-[var(--card-shadow-hover)] transition-[var(--transition-smooth)];
+    @apply bg-card border border-border rounded-2xl shadow-[var(--card-shadow)] hover:shadow-[var(--shadow-elegant)] transition-[var(--transition-smooth)];
+  }
+  
+  .dashboard-card-enhanced {
+    @apply dashboard-card;
+    background: var(--gradient-card-glow);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
   }
   
   .welcome-gradient {
@@ -158,11 +181,44 @@
   }
   
   .stats-card {
-    @apply dashboard-card p-6 hover:scale-[1.02] cursor-pointer;
+    @apply dashboard-card p-6 hover:scale-[1.02] cursor-pointer relative overflow-hidden;
+  }
+  
+  .stats-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+  
+  .stats-card:hover::before {
+    left: 0;
+    opacity: 0.05;
   }
   
   .recommendation-card {
-    @apply dashboard-card p-5 hover:-translate-y-1;
+    @apply dashboard-card p-5 hover:-translate-y-1 hover:shadow-[var(--shadow-enhanced)] relative overflow-hidden;
+  }
+  
+  .tabs-enhanced .tabs-list {
+    @apply bg-muted/50 backdrop-blur-sm border border-border/50 rounded-xl p-1;
+  }
+  
+  .tabs-enhanced .tabs-trigger {
+    @apply data-[state=active]:bg-background data-[state=active]:shadow-[var(--shadow-glow)] data-[state=active]:border data-[state=active]:border-primary/20;
+  }
+  
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .enhanced-gradient {
+    background: var(--gradient-hero);
   }
 
   /* Custom sidebar spacing */
